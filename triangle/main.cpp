@@ -18,13 +18,14 @@ int dp[MAX][MAX];
 int min(int a, int b) {
     int res = 0;
     
-    if(a < b) { res = a; }
-    else { res = b; }
+    if(a < b) res = a;
+    else res = b;
     
     return res;
 }
 
 void init_dp() {
+    
     for(int i = 0; i < MAX; ++i)
         for(int j = 0; j < MAX; ++j)
             dp[i][j] = -LARGE;
@@ -35,13 +36,11 @@ int min_tot(vector<vector<int>> & triangle, int d, int i) {
     
     int min_sum = 0;
     
-    if(dp[d][i] != -LARGE) {
+    if(dp[d][i] != -LARGE)
         return dp[d][i];
-    }
     
-    if(d > len - 1) {
+    if(d > len - 1)
         return 0;
-    }
     
     if(d < len) {
         int min_sum1 = triangle[d][i] + min_tot(triangle, d + 1, i);
